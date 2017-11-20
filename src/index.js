@@ -1,1 +1,1 @@
-const yo = 'Yo world';
+const yo = 'Yo';
