@@ -1,5 +1,5 @@
 {
-  "name": "es6",
+  "name": "ticket-algorithm",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "build": "babel src --out-dir dist --watch --source-maps",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Peretz30",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
