@@ -8,7 +8,7 @@ const dataCards = [
     ['metro', 'Teatralnaya', 'Belorussky Station', 'Последний вагон. (начало пути)'],
     ['bus', 'Belorussky Station', 'Moscow Sheremetyevo (SVO)', 851],
    ];
-/*
+/* вид отсортированного массива
     ['metro', 'Teatralnaya', 'Belorussky Station', 'Последний вагон. (начало пути)'],
     ['bus', 'Belorussky Station', 'Moscow Sheremetyevo (SVO)', 851],
     ['airline', 'Moscow Sheremetyevo (SVO)', 'Bologna (BLQ)', 'DL31', 'A22', 'D3', '24C'],
@@ -27,47 +27,23 @@ const sortCards = (dataCards) => {
         return acc;
     }, [])
 
-    // начало сортировки
+    // начало сортировки, суть заключается в том что мы сравниваем массив точек отправления с массивом точек прибытия. Например, если точки отправления нет
+    // среди точек прибытия значит это начало пути, записываем этот элемент в новый массив и удаляем из старого и т.д.
     const sortedCards = [];
     for (let i = 0; i < dataCards.length;i++) {
         fromArray.filter((elem, ind, arr) => { 
             if (toArray.includes(elem)) {
                 return true;
-            } else {
-                if (!sortedCards.includes(elem)) {
-                    sortedCards.push(elem);
+            } else { // если найдена уникальная точка
+                if (!sortedCards.includes(dataCards[ind])) { // и она не была найдена ранее
+                    sortedCards.push(dataCards[ind]); // добавляем ее в массив
                     }   
-                toArray.splice(ind, 1); // удаление элемента по индексу из массива toArray
+                toArray.splice(ind, 1); // удаление элемента по индексу из старого массива, чтобы снова на нее не наткнуться
                 return false;
             };
         });
     };    
-    /*
-    const beginIndex = fromArray.reduce((acc, elem, ind, arr) => { // находим начало путешествия в виде номера индекса элемента массива
-        
-        if (!toArray.includes(elem)) acc = ind; // ищем точку отправления, которой нет среди точек прибытия и запоминаем ее индекс. Это и будет начало пути.
-        return acc;
-    }, 0);
-
-    */
-    const endIndex = toArray.reduce((acc, elem, ind, arr) => { // находим конец путешествия в виде номера индекса элемента массива
-        if (!fromArray.includes(elem)) acc = ind; // ищем точку прибытия, которой нет среди точек отправления и запоминаем ее индекс. Это и будет конец пути.
-        return acc;
-    }, 0);
-
-
-    /*
-    const buildPath = (beginIndex,endIndex,dataCards) => {
-        dataCards.reduce((acc, elem, ind, arr) => {
-            const firstDestination;
-            if (ind === beginIndex) {
-                acc.push(elem);
-                firstDestination = elem[2];
-            }
-            if (elem[1] === firstDestination) acc.push(elem); // следующий элемент
-        }, []);
-    }
-    */
+   
     return console.log(sortedCards);
 }
 
