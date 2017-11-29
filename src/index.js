@@ -1,5 +1,4 @@
-import { sortCards } from './sort';
-import Card from './card';
+import { sortCards,cardsArray, pathDescription } from './sort';
 
 const dataCards = [ 
     ['train', 'Bologna Centrale', 'Firenze S.M.N.', '№587', '56b', 4],
@@ -18,23 +17,14 @@ const dataCards = [
     ['train', 'Firenze S.M.N.', 'Pisa Centrale', 'R 3163', '21c', 9, '(конец пути)']
 */
 
-const sortedCards = sortCards(dataCards); // отсортировываем карточки по порядку
-
-const cardsArray = (sortedCards) => { // создаем из карточек объекты и добавляем описание
-    return sortedCards.reduce((acc, elem, ind, arr) => {
-        acc.push(new Card(elem));
-        return acc;
-    }, []);
+const ticketAlgorithm = (dataCards) => {
+    const sortedCards = sortCards(dataCards); // отсортировываем карточки по порядку
+    const cards = cardsArray(sortedCards); // создаем из карточек массив объектов и добавляем описание
+    const description = pathDescription(cards); // формируем конечный словесный список 
+    return description;
 };
 
-const cards = cardsArray(sortedCards); // создаем из карточек объекты и добавляем описание
-
-const pathDescription = (cardsArray) => {
-    return cardsArray.reduce((acc, card, ind, arr) => {
-        acc += card.description + '\n';
-        return acc;
-    }, '');
-}
+export default ticketAlgorithm;
 
 
-console.log(pathDescription(cards));
+

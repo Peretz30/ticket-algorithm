@@ -1,3 +1,5 @@
+import Card from './card';
+
 const sortCards = (dataCards) => {
     let fromArray = dataCards.reduce((acc, elem, index, arr) => { // собираем массив точек отправления
         acc.push(elem[1]);
@@ -9,7 +11,7 @@ const sortCards = (dataCards) => {
     }, [])
 
     // начало сортировки, суть заключается в том что мы сравниваем массив точек отправления с массивом точек прибытия. Например, если точки отправления нет
-    // среди точек прибытия значит это начало пути, записываем этот элемент в новый массив и удаляем из старого и т.д.
+    // среди точек прибытия значит это начало пути, записываем этот элемент в новый массив и удаляем точки начала и конца с соответсвующим индексом и т.д.
     const sortedCards = [];
     for (let i = 0; i < dataCards.length;i++) {
         fromArray.filter((elem, ind, arr) => { 
@@ -28,4 +30,18 @@ const sortCards = (dataCards) => {
     return sortedCards;
 }
 
-export { sortCards } ;
+const cardsArray = (sortedCards) => { // создаем из карточек объекты и добавляем описание
+    return sortedCards.reduce((acc, elem, ind, arr) => {
+        acc.push(new Card(elem));
+        return acc;
+    }, []);
+};
+
+const pathDescription = (cardsArray) => { // формируем конечное описание пути
+    return cardsArray.reduce((acc, card, ind, arr) => {
+        acc += card.description + '\n';
+        return acc;
+    }, '');
+}
+
+export { sortCards, cardsArray, pathDescription } ;
