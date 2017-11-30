@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir dist --watch --source-maps",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll"
   },
   "author": "Peretz30",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-preset-es2015-node6": "^0.4.0",
-    "eslint": "^4.9.0"
+    "eslint": "^4.9.0",
+    "jest": "^21.2.1"
   }
 }

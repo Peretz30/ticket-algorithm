@@ -2,19 +2,19 @@ import { sortCards,cardsArray, pathDescription } from './sort';
 
 const dataCards = [ 
     ['train', 'Bologna Centrale', 'Firenze S.M.N.', '№587', '56b', 4],
-    ['train', 'Firenze S.M.N.', 'Pisa Centrale', 'R 3163', '21c', 9, '(End of path)'],
+    ['train', 'Firenze S.M.N.', 'Pisa Centrale', 'R 3163', '21c', 9, '(End of path).'],
     ['airline', 'Moscow Sheremetyevo (SVO)', 'Bologna (BLQ)', 'DL31', 'A22', 'D3', '24C'],
     ['bus', 'Bologna (BLQ)', 'Bologna Centrale', 465],
     ['metro', 'Teatralnaya', 'Belorusskaya', 'Last carriage. (Path beginning)'],
     ['bus', 'Belorusskaya', 'Moscow Sheremetyevo (SVO)', 851],
    ];
 /* вид отсортированного массива
-    ['metro', 'Teatralnaya', 'Belorusskaya', 'Последний вагон. (начало пути)'],
+    ['metro', 'Teatralnaya', 'Belorusskaya', 'Last carriage. (Path beginning)'],
     ['bus', 'Belorusskaya', 'Moscow Sheremetyevo (SVO)', 851],
     ['airline', 'Moscow Sheremetyevo (SVO)', 'Bologna (BLQ)', 'DL31', 'A22', 'D3', '24C'],
     ['bus', 'Bologna (BLQ)', 'Bologna Centrale', 465],
     ['train', 'Bologna Centrale', 'Firenze S.M.N.', 587, '56b', 4],
-    ['train', 'Firenze S.M.N.', 'Pisa Centrale', 'R 3163', '21c', 9, '(конец пути)']
+    ['train', 'Firenze S.M.N.', 'Pisa Centrale', 'R 3163', '21c', 9, '(End of path).']
 */
 
 const ticketAlgorithm = (dataCards) => {
@@ -24,7 +24,8 @@ const ticketAlgorithm = (dataCards) => {
     return description;
 };
 
-export default ticketAlgorithm;
+module.exports = ticketAlgorithm;
+//export { ticketAlgorithm };
 
 
 
